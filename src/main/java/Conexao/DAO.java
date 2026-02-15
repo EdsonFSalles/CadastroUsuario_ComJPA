@@ -36,7 +36,7 @@ public class DAO<E> {
 		return this.abrirT().incluir(entidade).fecharT();
 	}
 	
-	public DAO<E> AtualizarCadastro(E entidade){
+	public DAO<E> Atualizar(E entidade){
 		 conexao.setSQl.merge(entidade);
 		 return this;
 	}
