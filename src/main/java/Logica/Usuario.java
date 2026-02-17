@@ -17,6 +17,22 @@ public class Usuario {
 	private int idade;
 	private String Email;
 	private String senha;
+	
+	public Usuario() {
+	}
+
+	
+	
+	public Usuario(String nome, int idade, String email, String senha) {
+		super();
+		this.nome = nome;
+		this.idade = idade;
+		Email = email;
+		this.senha = senha;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}
