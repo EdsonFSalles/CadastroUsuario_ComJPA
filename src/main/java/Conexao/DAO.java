@@ -41,8 +41,11 @@ public class DAO<E> {
 		 return this;
 	}
 	
-	public DAO<E> deletarCadastro( E entidade){
+	public DAO<E> deletarCadastro( Long ID){
+		E entidade = conexao.setSQl.find(classe, ID);
+		if(entidade != null) {
 		conexao.setSQl.remove(entidade);
+		}
 		return this;
 	}
 

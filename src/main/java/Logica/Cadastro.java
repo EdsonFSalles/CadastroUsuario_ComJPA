@@ -2,19 +2,28 @@ package Logica;
 
 import Conexao.DAO;
 
-public class Cadastro<Usuario> {
-	DAO<Usuario> dao = new DAO<>();
+public class Cadastro<E> {
+	DAO<E> dao = new DAO<>();
 	
-	public Cadastro<Usuario> cadastrarUsuario(Usuario usuario) {
+	public Cadastro<E> cadastrarUsuario(E usuario) {
 		dao.abrirT().incluir(usuario).fecharT();
 		return this;
 	}
 	
-	public Cadastro<Usuario> atualizarCadastro(Usuario usuario) {
-		dao.abrirT().Atualizar(usuario).fecharT();
+	public Cadastro<E> atualizarCadastro(E usuario) {
+		 dao.abrirT().Atualizar(usuario).fecharT();
+		 return this;
+	}
+	
+	public Cadastro<E> deletarCadastro(Usuario usuario){
+		if(usuario.getNome().isEmpty() && (usuario.getId() != null)) {
+			dao.abrirT().deletarCadastro(usuario.getId()).fecharT();
+		}
 		return this;
 	}
 	
-	//Contruir demais aplicações para a logica
+	public Usuario bucarCadastro(Usuario usuario){
+		return (Usuario) dao.abrirT().obterPorID(usuario.getId());
+	}
 	
 }
