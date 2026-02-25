@@ -9,6 +9,10 @@ public class Cadastro {
 	Scanner entrada;
 
 	public Cadastro() {
+		iniciar();
+	}
+
+	private void iniciar() {
 		entrada = new Scanner(System.in);
 		String borda = "==".repeat(15);
 		System.out.println(borda + "\n Qual ação deseja realizar?");
@@ -18,14 +22,15 @@ public class Cadastro {
 
 		switch (opcao) {
 		case 1:
+			System.out.println("Digite: nome, idade, email e senha");
 			String nome = lerString("Nome");
-			String email = lerString("Email");
 			int idade = lerInt("Idade");
+			String email = lerString("Email");
 			String senha = lerString("Senha");
 
 			Usuario usuario = new Usuario(nome, idade, email, senha);
 			cadastrarUsuario(usuario);
-
+			break;
 		case 2:
 			System.out.println("Digite o Id do usuario: ");
 			long IdUsuario = entrada.nextLong();
@@ -48,7 +53,7 @@ public class Cadastro {
 
 			String pergunta = lerString("\n Deseja atualizar senha? sim | não").toLowerCase();
 			String novaSenha = null;
-			
+
 			if (pergunta.equals("sim")) {
 				String Senha = lerString("Nova Senha");
 				usuarioNoBanco.setSenha(Senha);
@@ -57,20 +62,22 @@ public class Cadastro {
 
 			Usuario usuarioAtualizado = new Usuario(Nome, Idade, Email, novaSenha);
 			atualizarCadastro(usuarioAtualizado);
-
+			break;
 		case 3:
+			break;
 		case 4:
+			break;
 		case 5:
+			System.out.println("Finalizando programa...");
 		}
+
 	}
 
 	private String lerString(String texto) {
-		System.out.println("\n " + texto + ":");
 		return entrada.next();
 	}
 
 	private int lerInt(String texto) {
-		System.out.println("\n " + texto + ":");
 		return entrada.nextInt();
 	}
 
