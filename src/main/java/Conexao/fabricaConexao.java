@@ -11,8 +11,7 @@ public class fabricaConexao {
 	
 	public EntityManager Conexao() {
 		try {
-			EntityManagerFactory emf = Persistence
-					.createEntityManagerFactory("CadastroUsuario");
+			EntityManagerFactory emf = Persistence.createEntityManagerFactory("CadastroUsuario");
 			EntityManager em = emf.createEntityManager();
 			conexao = emf;
 			return setSQl = em;

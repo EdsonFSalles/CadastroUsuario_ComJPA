@@ -15,11 +15,11 @@
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localHost:3306/conexao_projetos" />
 			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="javax.persistence.jdbc.password" value="123456" />
 
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL57Dialect" />
-			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
@@ -27,12 +27,3 @@
 
 
 </persistence>
-
-<dependencies>
-	<dependency>
-		<groupId>org.springframework.security</groupId>
-		<artifactId>spring-security-crypto</artifactId>
-		<version>5.8.5</version>
-	</dependency>
-
-</dependencies>

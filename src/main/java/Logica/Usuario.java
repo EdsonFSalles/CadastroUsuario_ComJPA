@@ -12,7 +12,7 @@ public class Usuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private long id;
 	private String nome;
 	private int idade;
 	private String email;

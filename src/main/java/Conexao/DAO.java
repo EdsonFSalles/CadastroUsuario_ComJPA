@@ -2,6 +2,7 @@ package Conexao;
 
 import java.util.List;
 
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 public class DAO<E> {
@@ -76,10 +77,13 @@ public class DAO<E> {
 		}
 		return query.getResultList();
 	}
-
-	public E consultarUm(String nomeConsulta) {
-		List<E> query = consultar(nomeConsulta);
-		return query.isEmpty() ? null : query.get(0);
+	
+	
+	public List<E> consultarUm(String nomeConsulta) {
+		String jpql = "SELECT u FROM Usuario u WHERE u.nome LIKE :nomeConsulta";
+		TypedQuery<E> query = conexao.setSQl.createQuery(jpql, classe);
+		query.setParameter("nomeConsulta", "%" + nomeConsulta + "%");
+		return query.getResultList();
 	}
 
 	public void fecharConexao() {
