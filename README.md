@@ -1,4 +1,4 @@
-# Cadastro de usuario no banco de dado MySql
+# Cadastro de usuario com JPA
 ![Java](https://img.shields.io/badge/Java-21-red?style=for-the-badge)
 ![Hibernate](https://img.shields.io/badge/Hibernate-5.4.30.Final-green?style=for-the-badge)
 ![JPA](https://img.shields.io/badge/JPA-2.2-blue?style=for-the-badge)
