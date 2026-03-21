@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 import Conexao.DAO;
 
-public class Cadastro {
+public class CadastroUsuario {
 	DAO<Usuario> dao = new DAO<>(Usuario.class);
 	Scanner entrada = new Scanner(System.in);;
 
-	public Cadastro() {
+	public CadastroUsuario() {
 		iniciar();
 	}
 
@@ -32,10 +32,10 @@ public class Cadastro {
 				buscarRegistroUnico();
 				break;
 			case 4:
-				deletarCadastro();
+				buscarTodosRegistros();
 				break;
 			case 5:
-				buscarTodosRegistros();
+				deletarCadastro();
 				break;
 			case 6:
 				fechar = true;
@@ -50,7 +50,6 @@ public class Cadastro {
 
 	private Usuario retornarUsuario() {
 		while (true) {
-			
 			long idUsuario;
 			try {
 				idUsuario = entrada.nextLong();
@@ -65,10 +64,11 @@ public class Cadastro {
 				System.out.println("Email: " + usuarioNoBanco.getEmail());
 				System.out.println("Idade: " + usuarioNoBanco.getIdade());
 				return usuarioNoBanco;
-			} else {
+			}else {
 				System.out.println("Usuario não encontrado!");
 				System.out.println("Digite novamente o ID para busca:");
 			}
+
 		}
 	}
 
@@ -94,7 +94,7 @@ public class Cadastro {
 
 	private String atualizarEtapa(String entrada, String getValor) {
 		while (true) {
-			System.out.println("Deseja realizar atualizar " + entrada + "?(sim | nao):");
+			System.out.println("Deseja atualizar " + entrada + "?(sim | nao):");
 			String confirmNome = lerString().toLowerCase();
 			if (confirmNome.equals("nao")) {
 				return getValor;
@@ -111,7 +111,7 @@ public class Cadastro {
 		String borda = "==".repeat(15);
 		System.out.println(borda + "\n Qual ação deseja realizar?");
 		System.out.println(" 1 - Cadastrar \n 2 - Atualizar cadastro \n 3 - Buscar Cadastro"
-				+ "\n 4 - Deletear cadastro \n 5 - Buscar todos registros \n 6 - Sair" + "\n" + borda);
+				+ "\n 4 - Buscar todos registros \n 5 - Deletar cadastro \n 6 - Sair" + "\n" + borda);
 
 		while (true) {
 			String opcao = lerString();
@@ -151,7 +151,6 @@ public class Cadastro {
 		Usuario usuario = new Usuario(nome, idadeInt, email, senha);
 		cadastrarUsuarioDAO(usuario);
 	}
-
 
 	private void deletarCadastro() {
 
@@ -195,7 +194,7 @@ public class Cadastro {
 
 		}
 	}
-	
+
 	private void cadastrarUsuarioDAO(Usuario usuario) {
 		dao.incluirAtomico(usuario);
 	}
@@ -203,7 +202,7 @@ public class Cadastro {
 	private void atualizarCadastroDAO(Usuario usuario) {
 		dao.abrirT().Atualizar(usuario).fecharT();
 	}
-	
+
 	private Usuario buscarPorIdDAO(long idUsuario) {
 		return dao.obterPorID(idUsuario);
 	}
